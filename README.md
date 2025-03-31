@@ -5,6 +5,6 @@ A new Flutter project, this is a basic Note App that i made for my internship pr
 ## What is included in the learning
 
 - Utilizing Firebase Auth for User Authentication
-- Utilizing FIrebase Firestore for Database
+- Utilizing Firebase Firestore for Database
 - Learning State Management with Flutter Bloc and/or Cubit
 - CRUD
