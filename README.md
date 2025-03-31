@@ -1,16 +1,10 @@
 # basic_note
 
-A new Flutter project.
+A new Flutter project, this is a basic Note App that i made for my internship project. And since this is an individual task, i choose to do the backend with Firebase, as i have no prior knowledge about backend before, but using this opportunity, i get to learn about backend a little bit more
 
-## Getting Started
+## What is included in the learning
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- Utilizing Firebase Auth for User Authentication
+- Utilizing FIrebase Firestore for Database
+- Learning State Management with Flutter Bloc and/or Cubit
+- CRUD
