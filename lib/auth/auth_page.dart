@@ -1,4 +1,4 @@
-import 'package:basic_note/bloc/auth_page_cubit.dart';
+import 'package:basic_note/bloc/page_cubit.dart';
 import 'package:basic_note/content/home_page.dart';
 import 'package:basic_note/registration/forgot_password.dart';
 import 'package:basic_note/registration/sign_in.dart';
@@ -11,24 +11,24 @@ class AuthPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<AuthPageCubit, AuthPageState>(
+    return BlocBuilder<PageCubit, PageState>(
       builder: (context, state) {
-        if (state == AuthPageState.authenticated) {
+        if (state == PageState.authenticated) {
           return HomePage();
-        } else if (state == AuthPageState.login ||
-            state == AuthPageState.unauthenticated) {
+        } else if (state == PageState.login ||
+            state == PageState.unauthenticated) {
           return SignIn(
-            onTap: () => context.read<AuthPageCubit>().toggleLoginRegister(),
+            onTap: () => context.read<PageCubit>().toggleLoginRegister(),
             onForgotPassword:
-                () => context.read<AuthPageCubit>().toggleForgotPassword(),
+                () => context.read<PageCubit>().toggleForgotPassword(),
           );
-        } else if (state == AuthPageState.register) {
+        } else if (state == PageState.register) {
           return SignUp(
-            onTap: () => context.read<AuthPageCubit>().toggleLoginRegister(),
+            onTap: () => context.read<PageCubit>().toggleLoginRegister(),
           );
-        } else if (state == AuthPageState.forgotPassword) {
+        } else if (state == PageState.forgotPassword) {
           return ForgotPassword(
-            onBack: () => context.read<AuthPageCubit>().backToLogin(),
+            onBack: () => context.read<PageCubit>().backToLogin(),
           );
         } else {
           return Container(); // Fallback

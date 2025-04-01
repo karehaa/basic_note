@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
-enum AuthPageState {
+enum PageState {
   login,
   register,
   forgotPassword,
@@ -9,35 +9,31 @@ enum AuthPageState {
   unauthenticated,
 }
 
-class AuthPageCubit extends Cubit<AuthPageState> {
+class PageCubit extends Cubit<PageState> {
   FirebaseAuth auth = FirebaseAuth.instance;
 
-  AuthPageCubit() : super(AuthPageState.unauthenticated) {
+  PageCubit() : super(PageState.unauthenticated) {
     checkAuth();
   }
 
   void checkAuth() {
     final user = auth.currentUser;
     if (user != null) {
-      emit(AuthPageState.authenticated);
+      emit(PageState.authenticated);
     } else {
-      emit(AuthPageState.unauthenticated);
+      emit(PageState.unauthenticated);
     }
   }
 
   void toggleLoginRegister() {
-    emit(
-      state == AuthPageState.login
-          ? AuthPageState.register
-          : AuthPageState.login,
-    );
+    emit(state == PageState.login ? PageState.register : PageState.login);
   }
 
   void toggleForgotPassword() {
-    emit(AuthPageState.forgotPassword);
+    emit(PageState.forgotPassword);
   }
 
   void backToLogin() {
-    emit(AuthPageState.login);
+    emit(PageState.login);
   }
 }

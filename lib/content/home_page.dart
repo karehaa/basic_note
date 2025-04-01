@@ -1,5 +1,6 @@
 import 'package:basic_note/auth/auth_service.dart';
 import 'package:basic_note/color_pallete.dart';
+import 'package:basic_note/content/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -144,10 +145,19 @@ class _HomePageState extends State<HomePage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Image.asset(
-                                  'assets/image/note_icon.png',
-                                  width: 30,
-                                  height: 30,
+                                GestureDetector(
+                                  onTap:
+                                      () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => HomePage(),
+                                        ),
+                                      ),
+                                  child: Image.asset(
+                                    'assets/image/note_icon.png',
+                                    width: 30,
+                                    height: 30,
+                                  ),
                                 ),
                                 Container(
                                   width: 48,
@@ -161,10 +171,20 @@ class _HomePageState extends State<HomePage> {
                                     color: ColorPallete.white,
                                   ),
                                 ),
-                                Image.asset(
-                                  'assets/image/profile_icon.png',
-                                  width: 30,
-                                  height: 30,
+                                GestureDetector(
+                                  onTap:
+                                      () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ProfilePage(),
+                                        ),
+                                      ),
+                                  child: Image.asset(
+                                    'assets/image/profile_icon.png',
+                                    color: ColorPallete.white,
+                                    width: 30,
+                                    height: 30,
+                                  ),
                                 ),
                               ],
                             ),

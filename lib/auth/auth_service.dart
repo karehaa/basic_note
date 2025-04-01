@@ -1,11 +1,11 @@
-import 'package:basic_note/bloc/auth_page_cubit.dart';
+import 'package:basic_note/bloc/page_cubit.dart';
 import 'package:basic_note/services/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class AuthService extends AuthPageCubit {
+class AuthService extends PageCubit {
   final FirebaseFirestore store = FirebaseFirestore.instance;
 
   Future<void> signIn(
@@ -27,7 +27,7 @@ class AuthService extends AuthPageCubit {
       );
 
       if (context.mounted) {
-        context.read<AuthPageCubit>().emit(AuthPageState.authenticated);
+        context.read<PageCubit>().emit(PageState.authenticated);
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {
@@ -66,7 +66,7 @@ class AuthService extends AuthPageCubit {
       });
 
       if (context.mounted) {
-        context.read<AuthPageCubit>().emit(AuthPageState.authenticated);
+        context.read<PageCubit>().emit(PageState.authenticated);
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {
@@ -87,7 +87,7 @@ class AuthService extends AuthPageCubit {
       await auth.signOut();
 
       if (context.mounted) {
-        context.read<AuthPageCubit>().emit(AuthPageState.unauthenticated);
+        context.read<PageCubit>().emit(PageState.unauthenticated);
         Navigator.pop(context);
       }
     } on FirebaseAuthException catch (e) {
@@ -107,6 +107,21 @@ class AuthService extends AuthPageCubit {
           await store.collection('users').doc(user.uid).get();
 
       return userDoc["username"];
+    } catch (e) {
+      print("Error: $e");
+      return null;
+    }
+  }
+
+  Future<String?> getNamaLengkap() async {
+    try {
+      User? user = auth.currentUser;
+      if (user == null) return null;
+
+      DocumentSnapshot userDoc =
+          await store.collection('users').doc(user.uid).get();
+
+      return userDoc["nama_lengkap"];
     } catch (e) {
       print("Error: $e");
       return null;

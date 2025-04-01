@@ -1,4 +1,4 @@
-import 'package:basic_note/bloc/auth_page_cubit.dart';
+import 'package:basic_note/bloc/page_cubit.dart';
 import 'package:basic_note/firebase_options.dart';
 import 'package:basic_note/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -8,7 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
-  runApp(BlocProvider(create: (context) => AuthPageCubit(), child: MyApp()));
+  runApp(BlocProvider(create: (context) => PageCubit(), child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
