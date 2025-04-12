@@ -1,9 +1,11 @@
+import 'package:basic_note/auth/auth_page.dart';
 import 'package:basic_note/bloc/page_cubit.dart';
 import 'package:basic_note/services/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'dart:developer';
 
 class AuthService extends PageCubit {
   final FirebaseFirestore store = FirebaseFirestore.instance;
@@ -16,7 +18,9 @@ class AuthService extends PageCubit {
     if (!context.mounted) return;
     showDialog(
       context: context,
-      builder: (context) => Center(child: CircularProgressIndicator.adaptive()),
+      builder:
+          (context) =>
+              const Center(child: CircularProgressIndicator.adaptive()),
     );
 
     try {
@@ -29,6 +33,11 @@ class AuthService extends PageCubit {
       if (context.mounted) {
         context.read<PageCubit>().emit(PageState.authenticated);
         Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthPage()),
+          (route) => false,
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
@@ -47,7 +56,9 @@ class AuthService extends PageCubit {
     if (!context.mounted) return;
     showDialog(
       context: context,
-      builder: (context) => Center(child: CircularProgressIndicator.adaptive()),
+      builder:
+          (context) =>
+              const Center(child: CircularProgressIndicator.adaptive()),
     );
 
     try {
@@ -68,6 +79,11 @@ class AuthService extends PageCubit {
       if (context.mounted) {
         context.read<PageCubit>().emit(PageState.authenticated);
         Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthPage()),
+          (route) => false,
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
@@ -81,7 +97,9 @@ class AuthService extends PageCubit {
     if (!context.mounted) return;
     showDialog(
       context: context,
-      builder: (context) => Center(child: CircularProgressIndicator.adaptive()),
+      builder:
+          (context) =>
+              const Center(child: CircularProgressIndicator.adaptive()),
     );
     try {
       await auth.signOut();
@@ -89,6 +107,11 @@ class AuthService extends PageCubit {
       if (context.mounted) {
         context.read<PageCubit>().emit(PageState.unauthenticated);
         Navigator.pop(context);
+        Navigator.pushAndRemoveUntil(
+          context,
+          MaterialPageRoute(builder: (context) => const AuthPage()),
+          (route) => false,
+        );
       }
     } on FirebaseAuthException catch (e) {
       if (context.mounted) {
@@ -108,7 +131,7 @@ class AuthService extends PageCubit {
 
       return userDoc["username"];
     } catch (e) {
-      print("Error: $e");
+      log("Error: $e");
       return null;
     }
   }
@@ -123,7 +146,7 @@ class AuthService extends PageCubit {
 
       return userDoc["nama_lengkap"];
     } catch (e) {
-      print("Error: $e");
+      log("Error: $e");
       return null;
     }
   }

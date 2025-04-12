@@ -47,17 +47,17 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Center(
         child:
             isLoadingUsername && isLoadingNamaLengkap
-                ? CircularProgressIndicator.adaptive()
+                ? const CircularProgressIndicator.adaptive()
                 : Stack(
                   children: [
                     SafeArea(
                       child: Container(
-                        padding: EdgeInsets.symmetric(horizontal: 40),
+                        padding: const EdgeInsets.symmetric(horizontal: 40),
                         width: double.infinity,
                         child: SingleChildScrollView(
                           child: Column(
                             children: [
-                              SizedBox(height: 76),
+                              const SizedBox(height: 76),
                               Container(
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
@@ -72,7 +72,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   height: 132.22,
                                 ),
                               ),
-                              SizedBox(height: 30),
+                              const SizedBox(height: 30),
                               SizedBox(
                                 width: double.infinity,
                                 child: Column(
@@ -94,7 +94,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Container(
                                       height: 45,
                                       width: double.infinity,
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                         horizontal: 10,
                                       ),
                                       decoration: BoxDecoration(
@@ -135,7 +135,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     Container(
                                       height: 45,
                                       width: double.infinity,
-                                      padding: EdgeInsets.symmetric(
+                                      padding: const EdgeInsets.symmetric(
                                         horizontal: 10,
                                       ),
                                       decoration: BoxDecoration(
@@ -220,7 +220,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 107),
+                              const SizedBox(height: 107),
                               SizedBox(
                                 width: double.infinity,
                                 child: Column(
@@ -233,7 +233,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                         fontWeight: FontWeight.w400,
                                       ),
                                     ),
-                                    SizedBox(height: 12),
+                                    const SizedBox(height: 12),
                                     GestureDetector(
                                       onTap:
                                           () => AuthService().signOut(context),
@@ -261,7 +261,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   ],
                                 ),
                               ),
-                              SizedBox(height: 141),
+                              const SizedBox(height: 141),
                             ],
                           ),
                         ),
@@ -275,7 +275,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: ColorPallete.primary[900],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.elliptical(16, 16),
                             topRight: Radius.elliptical(16, 16),
                           ),
@@ -284,7 +284,7 @@ class _ProfilePageState extends State<ProfilePage> {
                           top: false,
                           bottom: true,
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 64),
+                            padding: const EdgeInsets.symmetric(horizontal: 64),
                             height: 75,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -294,7 +294,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => HomePage(),
+                                          builder:
+                                              (context) => const HomePage(),
                                         ),
                                       ),
                                   child: Image.asset(
@@ -310,7 +311,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                     shape: BoxShape.circle,
                                     color: ColorPallete.secondary[500],
                                   ),
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.add,
                                     color: ColorPallete.white,
                                   ),
@@ -320,7 +321,8 @@ class _ProfilePageState extends State<ProfilePage> {
                                       () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => ProfilePage(),
+                                          builder:
+                                              (context) => const ProfilePage(),
                                         ),
                                       ),
                                   child: Image.asset(

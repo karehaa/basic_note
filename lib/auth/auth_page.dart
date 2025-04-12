@@ -14,7 +14,7 @@ class AuthPage extends StatelessWidget {
     return BlocBuilder<PageCubit, PageState>(
       builder: (context, state) {
         if (state == PageState.authenticated) {
-          return HomePage();
+          return const HomePage();
         } else if (state == PageState.login ||
             state == PageState.unauthenticated) {
           return SignIn(

@@ -31,7 +31,7 @@ class _ObscureFieldState extends State<ObscureField> {
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      margin: EdgeInsets.symmetric(vertical: 12),
+      margin: const EdgeInsets.symmetric(vertical: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -58,7 +58,7 @@ class _ObscureFieldState extends State<ObscureField> {
                 fontWeight: FontWeight.w400,
               ),
               decoration: InputDecoration(
-                contentPadding: EdgeInsets.only(
+                contentPadding: const EdgeInsets.only(
                   left: 10,
                   right: 10,
                   top: 10.5,

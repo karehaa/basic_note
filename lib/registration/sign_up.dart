@@ -6,8 +6,6 @@ import 'package:basic_note/widgets/visible_field.dart';
 import 'package:basic_note/widgets/multipurpose_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key, required this.onTap});
@@ -25,42 +23,6 @@ class _SignUpState extends State<SignUp> {
   final TextEditingController confirmPasswordController =
       TextEditingController();
 
-  void registerUser() async {
-    showDialog(
-      context: context,
-      builder: (context) => Center(child: CircularProgressIndicator.adaptive()),
-    );
-
-    if (passwordController.text != confirmPasswordController.text) {
-      Navigator.pop(context);
-
-      displayMessageToUser("Password do not match!", context);
-    } else {
-      try {
-        FirebaseAuth auth = FirebaseAuth.instance;
-        FirebaseFirestore store = FirebaseFirestore.instance;
-        String loggedEmail = "${usernameController.text}@gmail.com";
-
-        UserCredential userCredential = await auth
-            .createUserWithEmailAndPassword(
-              email: loggedEmail,
-              password: passwordController.text,
-            );
-
-        await store.collection("users").doc(userCredential.user!.uid).set({
-          "username": usernameController.text,
-          "nama_lengkap": namaController.text,
-          "email": loggedEmail,
-        });
-
-        Navigator.pop(context);
-      } on FirebaseAuthException catch (e) {
-        Navigator.pop(context);
-        displayMessageToUser(e.code, context);
-      }
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -69,7 +31,7 @@ class _SignUpState extends State<SignUp> {
         child: Center(
           child: Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(horizontal: 40),
+            padding: const EdgeInsets.symmetric(horizontal: 40),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
@@ -82,7 +44,7 @@ class _SignUpState extends State<SignUp> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  Text("Buat akun baru kamu!"),
+                  const Text("Buat akun baru kamu!"),
                   const SizedBox(height: 60),
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,

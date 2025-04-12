@@ -1,5 +1,6 @@
 import 'package:basic_note/auth/auth_service.dart';
 import 'package:basic_note/color_pallete.dart';
+import 'package:basic_note/content/add_note_page.dart';
 import 'package:basic_note/content/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -40,7 +41,7 @@ class _HomePageState extends State<HomePage> {
       body: Center(
         child:
             isLoading
-                ? CircularProgressIndicator.adaptive()
+                ? const CircularProgressIndicator.adaptive()
                 : Stack(
                   children: [
                     SafeArea(
@@ -48,7 +49,7 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Container(
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                               vertical: 21,
                               horizontal: 40,
                             ),
@@ -86,11 +87,11 @@ class _HomePageState extends State<HomePage> {
                             ),
                           ),
                           Container(
-                            padding: EdgeInsets.symmetric(horizontal: 40),
+                            padding: const EdgeInsets.symmetric(horizontal: 40),
                             width: double.infinity,
                             child: Column(
                               children: [
-                                SizedBox(
+                                const SizedBox(
                                   height: 40,
                                   child: TextField(
                                     decoration: InputDecoration(
@@ -111,7 +112,7 @@ class _HomePageState extends State<HomePage> {
                                               () => AuthService().signOut(
                                                 context,
                                               ),
-                                          child: Text("Log Out"),
+                                          child: const Text("Log Out"),
                                         ),
                                       ],
                                     ),
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
                         width: double.infinity,
                         decoration: BoxDecoration(
                           color: ColorPallete.primary[900],
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             topLeft: Radius.elliptical(16, 16),
                             topRight: Radius.elliptical(16, 16),
                           ),
@@ -140,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                           top: false,
                           bottom: true,
                           child: Container(
-                            padding: EdgeInsets.symmetric(horizontal: 64),
+                            padding: const EdgeInsets.symmetric(horizontal: 64),
                             height: 75,
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -150,7 +151,8 @@ class _HomePageState extends State<HomePage> {
                                       () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => HomePage(),
+                                          builder:
+                                              (context) => const HomePage(),
                                         ),
                                       ),
                                   child: Image.asset(
@@ -159,16 +161,26 @@ class _HomePageState extends State<HomePage> {
                                     height: 30,
                                   ),
                                 ),
-                                Container(
-                                  width: 48,
-                                  height: 48,
-                                  decoration: BoxDecoration(
-                                    shape: BoxShape.circle,
-                                    color: ColorPallete.secondary[500],
-                                  ),
-                                  child: Icon(
-                                    Icons.add,
-                                    color: ColorPallete.white,
+                                GestureDetector(
+                                  onTap:
+                                      () => Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder:
+                                              (context) => const AddNotePage(),
+                                        ),
+                                      ),
+                                  child: Container(
+                                    width: 48,
+                                    height: 48,
+                                    decoration: BoxDecoration(
+                                      shape: BoxShape.circle,
+                                      color: ColorPallete.secondary[500],
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: ColorPallete.white,
+                                    ),
                                   ),
                                 ),
                                 GestureDetector(
@@ -176,7 +188,8 @@ class _HomePageState extends State<HomePage> {
                                       () => Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                          builder: (context) => ProfilePage(),
+                                          builder:
+                                              (context) => const ProfilePage(),
                                         ),
                                       ),
                                   child: Image.asset(

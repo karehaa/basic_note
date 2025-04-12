@@ -11,7 +11,7 @@ class ForgotPassword extends StatelessWidget {
     return Scaffold(
       backgroundColor: ColorPallete.white,
       body: Center(
-        child: ElevatedButton(onPressed: onBack, child: Text("Back")),
+        child: ElevatedButton(onPressed: onBack, child: const Text("Back")),
       ),
     );
   }
