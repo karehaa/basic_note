@@ -7,21 +7,30 @@ import 'package:flutter/services.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
-class AddNotePage extends StatefulWidget {
-  const AddNotePage({super.key});
+class UpdateNotePage extends StatefulWidget {
+  const UpdateNotePage({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
-  State<AddNotePage> createState() => _AddNotePageState();
+  State<UpdateNotePage> createState() => _UpdateNotePageState();
 }
 
-class _AddNotePageState extends State<AddNotePage> {
+class _UpdateNotePageState extends State<UpdateNotePage> {
+  DateTime now = DateTime.now();
   TextEditingController judulController = TextEditingController();
   TextEditingController isiController = TextEditingController();
-  DateTime now = DateTime.now();
-  String colorSelected = "blue";
+
+  @override
+  void initState() {
+    super.initState();
+    judulController.text = widget.note.title;
+    isiController.text = widget.note.content;
+  }
 
   @override
   Widget build(BuildContext context) {
+    String colorSelected = widget.note.color;
     String currentDate = DateFormat('dd MMMM yyyy').format(now);
     String wordCount = "${isiController.text.length}";
 
@@ -34,7 +43,7 @@ class _AddNotePageState extends State<AddNotePage> {
         color: colorSelected,
       );
 
-      _cubit.addNote(context, newNote);
+      _cubit.updateNote(context, newNote);
     }
 
     return Scaffold(
@@ -117,7 +126,7 @@ class _AddNotePageState extends State<AddNotePage> {
                         vertical: 12,
                         horizontal: 24,
                       ),
-                      hintText: "Judul...",
+                      hintText: widget.note.title,
                       hintStyle: GoogleFonts.inter(
                         color: ColorPallete.grey.withAlpha(100),
                         fontSize: 25,
@@ -145,13 +154,13 @@ class _AddNotePageState extends State<AddNotePage> {
                 SizedBox(
                   height: 517,
                   child: TextField(
+                    controller: isiController,
                     textAlign: TextAlign.justify,
                     onChanged: (text) {
                       setState(() {
                         wordCount = "${text.length}";
                       });
                     },
-                    controller: isiController,
                     maxLines: null,
                     expands: true,
                     keyboardType: TextInputType.multiline,
@@ -162,7 +171,7 @@ class _AddNotePageState extends State<AddNotePage> {
                         vertical: 12,
                         horizontal: 24,
                       ),
-                      hintText: "Isikan sesuatu...",
+                      hintText: widget.note.content,
                       hintStyle: GoogleFonts.inter(
                         color: ColorPallete.grey.withAlpha(100),
                         fontSize: 16,

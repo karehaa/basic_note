@@ -1,4 +1,4 @@
-import 'package:basic_note/auth/auth_service.dart';
+import 'package:basic_note/services/auth/auth_service.dart';
 import 'package:basic_note/color_pallete.dart';
 import 'package:basic_note/services/helper_function.dart';
 import 'package:basic_note/widgets/obscure_field.dart';

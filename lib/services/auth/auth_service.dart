@@ -1,5 +1,5 @@
-import 'package:basic_note/auth/auth_page.dart';
-import 'package:basic_note/bloc/page_cubit.dart';
+import 'package:basic_note/services/auth/auth_page.dart';
+import 'package:basic_note/services/bloc/page_cubit.dart';
 import 'package:basic_note/services/helper_function.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';

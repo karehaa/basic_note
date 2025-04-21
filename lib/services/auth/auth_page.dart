@@ -1,4 +1,4 @@
-import 'package:basic_note/bloc/page_cubit.dart';
+import 'package:basic_note/services/bloc/page_cubit.dart';
 import 'package:basic_note/content/home_page.dart';
 import 'package:basic_note/registration/forgot_password.dart';
 import 'package:basic_note/registration/sign_in.dart';

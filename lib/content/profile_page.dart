@@ -1,4 +1,4 @@
-import 'package:basic_note/auth/auth_service.dart';
+import 'package:basic_note/services/auth/auth_service.dart';
 import 'package:basic_note/color_pallete.dart';
 import 'package:basic_note/content/home_page.dart';
 import 'package:flutter/material.dart';

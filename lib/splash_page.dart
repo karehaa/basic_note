@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:basic_note/auth/auth_page.dart';
+import 'package:basic_note/services/auth/auth_page.dart';
 import 'package:basic_note/color_pallete.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
