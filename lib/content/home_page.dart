@@ -118,7 +118,7 @@ class _HomePageState extends State<HomePage> {
                                       ),
                                     ),
                                   ),
-                                  Container(
+                                  SizedBox(
                                     height: screenHeight - (screenHeight * 0.3),
                                     child: BlocBuilder<
                                       NoteCubit,

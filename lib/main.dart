@@ -1,7 +1,6 @@
 import 'package:basic_note/services/bloc/note_cubit.dart';
 import 'package:basic_note/services/bloc/page_cubit.dart';
 import 'package:basic_note/firebase_options.dart';
-import 'package:basic_note/services/notes/note_service.dart';
 import 'package:basic_note/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';

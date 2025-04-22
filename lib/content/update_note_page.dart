@@ -35,7 +35,7 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
     String wordCount = "${isiController.text.length}";
 
     void saveNote() {
-      final NoteCubit _cubit = NoteCubit();
+      final NoteCubit cubit = NoteCubit();
       final newNote = NoteModel(
         title: judulController.text,
         content: isiController.text,
@@ -43,7 +43,7 @@ class _UpdateNotePageState extends State<UpdateNotePage> {
         color: colorSelected,
       );
 
-      _cubit.updateNote(context, newNote);
+      cubit.updateNote(context, newNote);
     }
 
     return Scaffold(
